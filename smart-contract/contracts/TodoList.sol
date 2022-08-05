@@ -7,8 +7,8 @@ pragma solidity ^0.8.7;
 // view task
 
 contract TodoList {
-    event AddTask(address recipient, uint id);
-    event DeleteTask(uint id, bool isDeleted);
+    event AddTask(address owner, uint id);
+    event DeleteTask(uint id);
 
     struct Task {
         uint id;
@@ -23,9 +23,14 @@ contract TodoList {
         uint taskId = tasks.length;
         tasks.push(Task(taskId, _text, false));
         taskToOwner[taskId] = msg.sender;
+        emit AddTask(msg.sender, taskId);
     }
 
-    function getTask() external view returns (Task[] memory) {
+    function getTasks() external view returns (Task[] memory) {
+        return tasks;
+    }
+
+    function getOwnerTask() external view returns (Task[] memory) {
         Task[] memory tempTask = new Task[](tasks.length);
         uint counter = 0;
 
@@ -36,6 +41,18 @@ contract TodoList {
             }
         }
 
-        return tempTask;
+        Task[] memory results = new Task[](counter);
+        for (uint i = 0; i < counter; i++) {
+            results[i] = tempTask[i];
+        }
+
+        return results;
+    }
+
+    function deleteTask(uint _id) external {
+        if (taskToOwner[_id] == msg.sender) {
+            tasks[_id].isDeleted = true;
+            emit DeleteTask(_id);
+        }
     }
 }
