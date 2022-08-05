@@ -1,0 +1,114 @@
+{
+  "address": "0x42b2b946eecDeA9F9c00e0a1A455af00b7Cd3Fea",
+  "abi": [
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "AddTask",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "owner",
+          "indexed": false
+        },
+        {
+          "type": "uint256",
+          "name": "id",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "DeleteTask",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "addTask",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "string",
+          "name": "_text"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "deleteTask",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "_id"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "getOwnerTask",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "tuple[]",
+          "components": [
+            {
+              "type": "uint256",
+              "name": "id"
+            },
+            {
+              "type": "string",
+              "name": "text"
+            },
+            {
+              "type": "bool",
+              "name": "isDeleted"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getTasks",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "tuple[]",
+          "components": [
+            {
+              "type": "uint256",
+              "name": "id"
+            },
+            {
+              "type": "string",
+              "name": "text"
+            },
+            {
+              "type": "bool",
+              "name": "isDeleted"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
