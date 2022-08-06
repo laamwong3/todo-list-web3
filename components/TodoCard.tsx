@@ -25,7 +25,6 @@ const typoHeight = 80;
 
 export default function TodoCard() {
   const [deleteId, setDeleteId] = React.useState<number>();
-  const [isDeletingTask, setIsDeletingTask] = React.useState(false);
   const [value, setValue] = React.useState("");
   const { account, isWeb3Enabled } = useMoralis();
   const [ownerTask, setOwnerTask] = React.useState<OwnerTask[]>();
@@ -57,7 +56,7 @@ export default function TodoCard() {
       },
     });
 
-  console.log(ownerTask);
+  // console.log(ownerTask);
 
   const updateTask = (result: unknown) => {
     let tempArr: OwnerTask[] = [];
